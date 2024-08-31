@@ -12,10 +12,19 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(c-library)
 
+add_executable(c-library-wrapper.cjs api.c)
+target_link_libraries(c-library-wrapper.cjs c-library)
+target_link_options(c-library-wrapper.cjs PRIVATE
+-sMODULARIZE=1 -sEXPORT_NAME="createCLibraryModule"
+-s ENVIRONMENT="web"
+-sEXPORTED_FUNCTIONS=@${CMAKE_CURRENT_SOURCE_DIR}/exported_functions.txt)
+em_link_post_js(c-library-wrapper.cjs api.js)
+
 add_executable(c-library-wrapper.esm api.c)
 target_link_libraries(c-library-wrapper.esm c-library)
 target_link_options(c-library-wrapper.esm PRIVATE
--sMODULARIZE=1 -sEXPORT_ES6=1
+-sMODULARIZE=1 -sEXPORT_ES6=1 -sEXPORT_NAME="createCLibraryModule"
+-s ENVIRONMENT="web"
 -sEXPORTED_FUNCTIONS=@${CMAKE_CURRENT_SOURCE_DIR}/exported_functions.txt)
 em_link_post_js(c-library-wrapper.esm api.js)
 

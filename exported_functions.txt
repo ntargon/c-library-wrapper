@@ -1,1 +1,3 @@
 _add
+_malloc
+_free
