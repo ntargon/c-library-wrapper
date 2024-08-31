@@ -1,2 +1,5 @@
 node_modules
-*build
+jsbuild/*
+!jsbuild/*.mjs
+!jsbuild/*.js
+!jsbuild/*.wasm
