@@ -1,0 +1,33 @@
+{
+  "name": "c-library-wrapper",
+  "version": "0.0.1",
+  "description": "A very simple example of packaging WebAssembly",
+  "types": "./index.d.ts",
+  "main": "./jsbuild/c-library-wrapper.cjs.js",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./jsbuild/c-library-wrapper.cjs.js",
+      "import": "./jsbuild/c-library-wrapper.esm.js",
+      "default": "./jsbuild/c-library-wrapper.esm.js"
+    }
+  },
+  "author": "Naoki Tokunaga",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo TODO"
+  },
+  "files": [
+    "index.d.ts",
+    "jsbuild/c-library-wrapper.esm.mjs",
+    "jsbuild/c-library-wrapper.cjs.js",
+    "jsbuild/c-library-wrapper.*.wasm"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.14.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@types/emscripten": "^1.39.6"
+  }
+}
